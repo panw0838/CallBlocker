@@ -32,13 +32,10 @@ public class CallReceiver extends BroadcastReceiver {
                 // state 当前状态 incomingNumber,貌似没有去电的API
                 super.onCallStateChanged(state, incomingNumber);
                 switch (state) {
-                    //手机空闲了
                     case TelephonyManager.CALL_STATE_IDLE:
                         break;
-                    //电话被挂起
                     case TelephonyManager.CALL_STATE_OFFHOOK:
                         break;
-                    // 当电话呼入时
                     case TelephonyManager.CALL_STATE_RINGING:
                         Log.e(TAG, "来电号码是：" + incomingNumber);
                         // 如果该号码属于黑名单
@@ -62,7 +59,8 @@ public class CallReceiver extends BroadcastReceiver {
             // 挂断电话
             telephony.endCall();
             //telephony.cancelMissedCallsNotification();
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             Log.e(TAG, "error" + e.toString());
         }
     }
