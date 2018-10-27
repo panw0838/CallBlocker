@@ -39,8 +39,7 @@ public class CallReceiver extends BroadcastReceiver {
                     case TelephonyManager.CALL_STATE_RINGING:
                         Log.e(TAG, "来电号码是：" + incomingNumber);
                         // 如果该号码属于黑名单
-                        if (incomingNumber.equals("*********")) {
-                            // TODO:如果是黑名单，就进行屏蔽
+                        if (CallsManager.IsTrashCall(incomingNumber)) {
                             stopCall();
                         }
                         break;
